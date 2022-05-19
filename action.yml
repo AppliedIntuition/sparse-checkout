@@ -127,7 +127,7 @@ runs:
             REF=$(gh api repos/$REPOSITORY --jq '.default_branch')
           fi
         fi
-        $GIT -c protocol.version=2 fetch --no-tags --prune --progress --depth=1 origin +${REF}:refs/remotes/origin/${REF}
+        $GIT -c protocol.version=2 fetch --filter=blob:none --no-tags --prune --progress --depth=1 origin +${REF}:refs/remotes/origin/${REF}
         echo "::endgroup::"
       env:
         REF: ${{ inputs.ref }}
